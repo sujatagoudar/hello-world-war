@@ -1,12 +1,12 @@
 pipeline {
 	agent none
         stages {
-           stage ("tomcat buid & move to other node") {
+           stage ("tomcat build & move to other node") {
 	       agent {label "buildslave"}
               steps {
                       sh 'sudo mvn package'
 		      sh 'ls'
-		      sh 'scp -R target/hello-world-war-1.0.0.war root@172.31.2.10:/opt/tomcat/webapps'
+		      sh 'scp -R target/hello-world-war-1.0.0.war root@172.31.2.10:/opt'
 		      echo "sucessfully copied build to other node"
 	      }
 	   }
