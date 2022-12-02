@@ -1,8 +1,7 @@
 pipeline {
-	agent none
+	agent {label 'slavefinal'}
         stages {
            stage ("tomcat build & move to other node") {
-	       agent {label "slavefinal"}
               steps {
                       sh 'sudo mvn deploy'
 		      sh "echo ${BUILD_NUMBER}"
