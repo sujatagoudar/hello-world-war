@@ -11,7 +11,7 @@ pipeline {
 	      }
 	   }
 	   stage ('diploy in node2') {
-	      agent {label "slave"}
+	      agent {label "master"}
 	   	steps {
 		    sh 'curl -u sujatasiddarth123@gmail.com:Admin@123 -O https://sujata.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
 		    sh 'sudo cp -R hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/webapps/'
