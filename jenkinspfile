@@ -4,6 +4,7 @@ pipeline {
            stage ("tomcat build & move to other node") {
               steps {
 	              sh 'sudo mvn package'
+		      sh 'mvn deploy'
 	              echo "sucessfully copied build to other node"
 	            }
 	         }
