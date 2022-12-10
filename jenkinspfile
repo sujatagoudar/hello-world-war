@@ -4,19 +4,18 @@ pipeline {
            stage ("tomcat build & move to other node") {
               steps {
 	              sh 'sudo mvn package'
+		      sh 'scp -r /home/slave/workspace/pipe/target/hello-world-war-1.0.0.war root@172.31.4.207:/opt/tomcat/apache-tomcat-10.0.27/webapps/'
 	              echo "sucessfully copied build to other node"
 	            }
 	         }
 	         stage ('deploy ') {
 	         agent {label "slv"}
 	   	         steps {
-		                   sh 'curl -u sujatasiddarth123@gmail.com:Admin@123 -O https://sujata.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
-		                   sh 'sudo cp -R hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/webapps/'
 		                   sh 'sudo sh /opt/tomcat/bin/shutdown.sh'
-                       sh 'sleep 3'
-                       sh 'sudo sh /opt/tomcat/bin/startup.sh'
-                       echo "diployment is sucessfull"
-                       echo "copy the public ip of instace and open it in browser with port:8090"
+                                   sh 'sleep 3'
+                                   sh 'sudo sh /opt/tomcat/bin/startup.sh'
+                                   echo "diployment is sucessfull"
+                                   echo "copy the public ip of instace and open it in browser with port:8090"
 	             }
 	         }
 	    }
