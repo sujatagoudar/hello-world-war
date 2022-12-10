@@ -11,7 +11,7 @@ pipeline {
 	         agent {label "slv"}
 	   	         steps {
 			           sh 'curl -u sujatasiddarth123@gmail.com:Admin@123 -O https://sujata.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/1.0.0/hello-world-war-1.0.0.war'
-				   sh 'cp hello-world-war-1.0.0.war /opt/tomcat/webapps/'
+				   sh 'sudo cp hello-world-war-1.0.0.war /opt/tomcat/webapps/'
                                    sh 'sleep 3'
                                    sh 'sudo sh /opt/tomcat/bin/startup.sh'
                                    echo "diployment is sucessfull"
