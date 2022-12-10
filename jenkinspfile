@@ -4,14 +4,14 @@ pipeline {
            stage ("tomcat build & move to other node") {
               steps {
 	              sh 'sudo mvn package'
-		      sh 'scp -r /home/slave/workspace/pipe/target/hello-world-war-1.0.0.war root@172.31.4.207:/opt/tomcat/webapps/'
 	              echo "sucessfully copied build to other node"
 	            }
 	         }
 	         stage ('deploy ') {
 	         agent {label "slv"}
 	   	         steps {
-		                   sh 'sudo sh /opt/tomcat/bin/shutdown.sh'
+			           sh 'curl -u sujatasiddarth123@gmail.com:Admin@123 -O https://sujata.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/1.0.0/'
+				   sh 'cp hello-world-war-1.0.0.war /opt/tomcat/webapps/'
                                    sh 'sleep 3'
                                    sh 'sudo sh /opt/tomcat/bin/startup.sh'
                                    echo "diployment is sucessfull"
