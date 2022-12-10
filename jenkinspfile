@@ -4,7 +4,7 @@ pipeline {
            stage ("tomcat build & move to other node") {
               steps {
 	              sh 'sudo mvn package'
-		      sh 'scp -r /home/slave/workspace/pipe/target/hello-world-war-1.0.0.war root@172.31.4.207:/opt/tomcat/apache-tomcat-10.0.27/webapps/'
+		      sh 'scp -r /home/slave/workspace/pipe/target/hello-world-war-1.0.0.war root@172.31.4.207:/opt/tomcat/webapps/'
 	              echo "sucessfully copied build to other node"
 	            }
 	         }
