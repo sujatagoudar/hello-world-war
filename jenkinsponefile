@@ -1,5 +1,5 @@
 pipeline {
-	agent {label 'slavetwo'}
+	agent {label 'build'}
         stages {
            stage ("tomcat build & move to other node") {
               steps {
@@ -9,7 +9,7 @@ pipeline {
 	            }
 	         }
 	         stage ('deploy ') {
-	         agent {label "slv"}
+	         agent {label "deploy"}
 	   	         steps {
 			           sh 'curl -u sujatasiddarth123@gmail.com:Admin@123 -O https://sujata.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_VERSION}/hello-world-war-${BUILD_VERSION}.war'
 				   sh 'sudo cp hello-world-war-${BUILD_VERSION}.war /opt/tomcat/webapps/'
